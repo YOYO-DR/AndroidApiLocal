@@ -10,10 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.builes.androidapilocal.R;
+import com.builes.androidapilocal.adaptadores.AdaptadorProductos;
 import com.builes.androidapilocal.api.ApiLocal;
 import com.builes.androidapilocal.functions.Funciones;
+
+import org.json.JSONArray;
 
 public class ListaProduFragment extends Fragment {
     Button btnVolverListaProdu;
@@ -30,17 +34,20 @@ public class ListaProduFragment extends Fragment {
         btnVolverListaProdu=vista.findViewById(R.id.btnVolverListaProdu);
         recyListProdu=vista.findViewById(R.id.recyListProdu);
         recyListProdu.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        //cargar productos
+        Funciones.enviarPeticionGet(getContext(), ApiLocal.urlListProdu,
+        (statusCode, respuesta) -> {
+            JSONArray array= new JSONArray(respuesta);
+            AdaptadorProductos adapter = new AdaptadorProductos(getContext(),array);
+            recyListProdu.setAdapter(adapter);
+       },(statusCode, error) -> {
+            Toast.makeText(getContext(), ""+error.toString(), Toast.LENGTH_SHORT).show();
+        });
         //evento para volver al inicio
         btnVolverListaProdu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Funciones.enviarPeticionGet(getContext(), ApiLocal.urlListProdu,
-                (statusCode, respuesta) -> {
 
-                },(statusCode, error) -> {
-
-                });
             }
         });
 

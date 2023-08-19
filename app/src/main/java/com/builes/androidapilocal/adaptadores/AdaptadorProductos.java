@@ -1,6 +1,7 @@
 package com.builes.androidapilocal.adaptadores;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,8 +53,9 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
             holder.tvNombreProdu.setText(jsonArray.getJSONObject(position).get("nombre").toString());
             holder.tvValorUni.setText(jsonArray.getJSONObject(position).get("vrUnitario").toString());
             //holder.imagenUser.setImageResource(R.mipmap.ic_launcher);
-            String url= ApiLocal.urlResProdu +jsonArray.getJSONObject(position).get("imagen").toString();
+            String url= ApiLocal.urlResProdu +jsonArray.getJSONObject(position).get("imagen");
             //con picasso le paso el contexto, con el load la url, y en el into el imagenView
+            Log.e("image",url);
             Picasso.with(this.context).load(url).into(holder.imagenProdu);
         }catch (JSONException e){
             //error no se pudo obtener el json
