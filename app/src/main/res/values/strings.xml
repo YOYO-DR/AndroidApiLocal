@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">androidApiLocal</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Productos y Marcas</string>
+    <string name="h_nombre">Nombre</string>
+    <string name="h_codigo">Codigo</string>
+    <string name="h_desc">Descripción</string>
+    <string name="h_precio">Precio</string>
+    <string name="btn_imagen">Cargar imagen</string>
+    <string name="btn_enviar">Enviar</string>
+
 </resources>

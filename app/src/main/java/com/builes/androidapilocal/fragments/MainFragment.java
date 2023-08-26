@@ -37,6 +37,15 @@ public class MainFragment extends Fragment {
                 Funciones.crearFrag(fragListaProduManager,fragListaProdu,container.getId());
             }
         });
+        btnIngresarProdu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //cargar fragmento de agregar producto
+                Fragment fragAgreProdu=new AgregarProductoFragment();
+                FragmentManager fragAgreProduManager=getActivity().getSupportFragmentManager();
+                Funciones.crearFrag(fragAgreProduManager,fragAgreProdu,container.getId());
+            }
+        });
 
         return vista;
     }
